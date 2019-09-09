@@ -13,7 +13,7 @@
     "compile:localhost": "tsc -p tsconfig.server.localhost.json",
     "server": "node www/server.js",
     "pwa": "npm run build:pwa && npm run compile:localhost && npm run server",
-    "build:pwa": "ionic build --prod --configuration=production"
+    "build:pwa": "ng build --prod --configuration=production"
   },
   "private": true,
   "dependencies": {
