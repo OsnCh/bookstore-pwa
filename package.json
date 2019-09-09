@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "compile:localhost": "tsc -p tsconfig.server.localhost.json",
     "server": "node www/server.js",
-    "pwa": "ionic build --prod --configuration=production && npm run compile:localhost && npm run server"
+    "pwa": "npm run build:pwa && npm run compile:localhost && npm run server",
+    "build:pwa": "ionic build --prod --configuration=production"
   },
   "private": true,
   "dependencies": {
