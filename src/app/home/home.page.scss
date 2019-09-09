@@ -1,1 +1,7 @@
-
+ion-header{
+    display: flex;
+    align-items: center;
+    .install-app{
+        margin-right: 10px;
+    }
+}

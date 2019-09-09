@@ -1,0 +1,7 @@
+{
+  "appId": "com.bookstore.pwa",
+  "appName": "jsjargon",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

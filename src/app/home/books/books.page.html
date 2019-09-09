@@ -1,0 +1,18 @@
+  <ion-card *ngFor="let book of books">
+    <ion-card-header>
+      <ion-card-title>{{book.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-label><span>Category:</span> {{book.category.name}}<br/></ion-label>
+      <ion-label><span>Price:</span> {{book.price}}<br/></ion-label>
+      <br/>
+      <div class="description">
+        <ion-label>{{book.description}}</ion-label>
+      </div>
+      <div class="buttons">
+          <ion-button (click)="navigateDetails(book.id)" fill="outline"
+              slot="end">Details</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>

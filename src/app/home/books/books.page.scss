@@ -1,0 +1,17 @@
+:host {
+  justify-content: normal;
+  display: block;
+  overflow: auto;
+  ion-card {
+    height: 210px;
+    .description{
+        max-height: 38px;
+        overflow: hidden;
+    }
+    .buttons {
+      margin-top: 5px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
