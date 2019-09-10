@@ -42,12 +42,12 @@ const httpOptions = {
     cert: fs.readFileSync('./cert.crt')
 }
 
-// app.listen(PORT, () => {
-//     console.log(`Node Express server listening on http://localhost:${PORT}`);
-// })
+app.listen(PORT, () => {
+    console.log(`Node Express server listening on http://localhost:${PORT}`);
+})
 
-https.createServer(httpOptions, app).
-    listen(PORT, '10.10.0.66', () => {
-        console.log(`Node Express server listening on https://10.10.0.66:${PORT}`);
-    });
+// https.createServer(httpOptions, app).
+//     listen(PORT, '10.10.0.66', () => {
+//         console.log(`Node Express server listening on https://10.10.0.66:${PORT}`);
+//     });
 
