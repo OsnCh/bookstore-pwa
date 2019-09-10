@@ -12,7 +12,17 @@
           "/*.css",
           "/*.js",
           "/assets/**",
-          "/svg/**",
+          "/svg/md-arrow-back.svg",
+          "/svg/ios-arrow-back.svg"
+        ]
+      }
+    },
+    {
+      "name": "app",
+      "installMode": "lazy",
+      "resources": {
+        "files": [
+          "/svg/*",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
