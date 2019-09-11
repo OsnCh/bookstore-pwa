@@ -32,7 +32,7 @@
     {
       "name": "api",
       "urls": [
-        "/api/**"
+        "/api/book/all"
       ],
       "cacheConfig": {
         "strategy": "freshness",

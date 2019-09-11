@@ -4,6 +4,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { InstallPwaService } from '../services/install-pwa.service';
 import { AlertController } from '@ionic/angular';
+import { ChangeBookDataService } from '../services/change-book-data.service';
+import { BooksDataService } from '../services/books-data.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,9 @@ export class HomePage implements OnInit, OnDestroy {
 
   constructor(private readonly titleService: HomeTitleService,
     private readonly installPwaService: InstallPwaService,
-    private readonly alertController: AlertController) {}
+    private readonly alertController: AlertController,
+    private readonly changeBookData: ChangeBookDataService,
+    private readonly booksDataService: BooksDataService) {}
 
   public title: string;
   public showBackButton: boolean;
@@ -75,6 +79,21 @@ export class HomePage implements OnInit, OnDestroy {
     this.showInstallPwaButton = this.installPwaService.prompt != null;
     this.installPwaService.promptChange.pipe(takeUntil(this.onDestroy)).
       subscribe(() => this.showInstallPwaButton = this.installPwaService.prompt != null)
+    this.changeBookData.apiDataPushedEvent.pipe(takeUntil(this.onDestroy)).
+      subscribe(async () => {
+        await this.booksDataService.loadBooks();
+        this.alert = await this.alertController.create({
+          message: 'Update data is successful',
+          buttons: [
+            {
+              text: 'Ok',
+              role: 'cancel'
+            }
+          ]
+        })
+        await this.alert.present();
+      })
+    this.changeBookData.sendOfflineData();
   }
 
   ngOnDestroy(): void {

@@ -1,12 +1,57 @@
 <ion-item lines="none">
   <ion-title slot="start">{{book.name}}</ion-title>
 </ion-item>
-<ion-item lines="none">
-  <ion-label><span>Category:</span>{{book.category.name}}<br /></ion-label>
-</ion-item>
-<ion-item lines="none">
-  <ion-label><span>Price:</span> {{book.price}}<br /></ion-label>
-</ion-item>
-<ion-item lines="none">
-  <ion-label>{{book.description}}</ion-label>
-</ion-item>
+  <div class="table">
+    <tr>
+      <td>
+        <ion-item lines="none">
+          <ion-label>Category:</ion-label>
+        </ion-item>
+      </td>
+      <td>
+        <div class="input-wrapper">
+          <ng-select [items]="categories"
+                     bindLabel="name"
+                     [searchable]="false"
+                     [clearable]="false"
+                     [(ngModel)]="selectCategory">
+            <ng-template ng-label-tmp
+                         let-item="item">
+              <b>{{item.name}}</b> is cool
+            </ng-template>
+          </ng-select>
+        </div>
+      </td>
+    </tr>
+
+    <form [formGroup]="bookForm">
+    <tr>
+      <td>
+        <ion-item lines="none">
+          <ion-label>Price:</ion-label>
+        </ion-item>
+      </td>
+      <td>
+        <div class="input-wrapper">
+          <input [ngClass] = "{ 'invalid': isValidControl('price') }" formControlName="price">
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="description-title">
+        <ion-item lines="none">
+          <ion-label>Description:</ion-label>
+        </ion-item>
+      </td>
+      <td>
+        <div class="input-wrapper">
+          <textarea [ngClass] = "{ 'invalid': isValidControl('description') }" formControlName="description"></textarea>
+        </div>
+      </td>
+    </tr>
+  </form>
+</div>
+<div class="button-wrapper">
+  <ion-button [disabled]="disabledSave" (click)="save()">Save</ion-button>
+</div>

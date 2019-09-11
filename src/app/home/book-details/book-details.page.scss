@@ -1,7 +1,51 @@
-:host{
+:host {
+  display: flex;
+  justify-content: normal;
+  ion-title {
+    padding: 0;
+  }
+  .table {
     display: flex;
-    justify-content: normal;
-    ion-title{
-        padding: 0;
+    flex-flow: column;
+    tr {
+      width: 100%;
+      display: flex;
+      td:first-child {
+        flex: 0 1 auto;
+        width: 130px;
+      }
+      td:last-child{
+        flex: 1 1 auto;
+      }
     }
+    .description-title {
+      vertical-align: top;
+    }
+    .input-wrapper {
+      padding: 10px;
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        outline: none !important;
+      }
+      textarea {
+        min-height: 150px;
+      }
+    }
+  }
+  .button-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    ion-button {
+      margin: 12px;
+      width: 100%;
+      align-self: flex-end;
+    }
+  }
+}
+
+ng-select ::ng-deep .ng-select-container {
+  box-shadow: none !important;
+  border-color: #b3b3b3 !important;
 }

@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { HomePage } from './home.page';
 import { HomeTitleService } from '../services/home-title.service';
 import { BooksPage } from './books/books.page';
 import { BookDetailsPage } from './book-details/book-details.page';
 import { BooksDataService } from '../services/books-data.service';
+import { UpdateBookRepository } from '../services/repositories/update-book.repository';
+import { ChangeBookDataService } from '../services/change-book-data.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -35,10 +38,13 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgSelectModule
   ],
   declarations: [HomePage, BookDetailsPage, BooksPage],
-  providers: [HomeTitleService, BooksDataService]
+  providers: [HomeTitleService, BooksDataService, 
+    UpdateBookRepository, ChangeBookDataService]
 })
 export class HomePageModule { }

@@ -4,7 +4,11 @@
 
 export const environment = {
   apiUrl: 'http://localhost:8080/api/',
-  production: false
+  production: false,
+  indexDBSettings:{
+    name: 'database',
+    version: 1
+  }
 };
 
 /*

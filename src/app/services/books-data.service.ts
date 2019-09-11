@@ -4,12 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LoadingController } from '@ionic/angular';
 import { GetBooksItemModel } from '../shared/models/getBooksItem.model';
+import { ChangeBookDataService } from './change-book-data.service';
 
 @Injectable()
 export class BooksDataService{
 
     constructor(private readonly httpClient: HttpClient,
-        private loadingController: LoadingController){}
+        private readonly loadingController: LoadingController,
+        private readonly offlineDataService: ChangeBookDataService){}
 
     public booksChange: EventEmitter<GetBooksModel> = new EventEmitter();
 
@@ -28,8 +30,9 @@ export class BooksDataService{
         });
         await loader.present();       
         this.httpClient.get<GetBooksModel>(`${environment.apiUrl}book/all`).
-            subscribe((data) => {
-                this.books = data;
+            subscribe(async (data) => {
+                this.books = await this.offlineDataService.updateCacheResponse(data);
+                console.log(this.books);
                 loader.dismiss()
             }, () => {
                 this.books = new GetBooksModel();
