@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private readonly installPwaService: InstallPwaService
+    private readonly installPwaService: InstallPwaService,
+    private readonly swUpdate: SwUpdate
   ) {
     this.initializeApp();
   }
@@ -34,5 +35,11 @@ export class AppComponent implements OnInit {
       e.preventDefault();
       this.installPwaService.prompt = e;
     });
+    /*await load prefetch*/
+      const channel = new BroadcastChannel('sw-master');
+      channel.addEventListener('message', event => {
+        alert(event.data)
+      });
+    /**/
   }
 }
